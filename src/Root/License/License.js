@@ -34,7 +34,7 @@ export default function License(props){
 				<title>License - Learn Now!</title>
 			</Helmet>
 			<Box mb={5}><Typography className={classes.title} variant="h4">License</Typography></Box>
-			<Box mb={5}><Typography className={classes.info}>This website is Open-Sourced with MIT License. The github repo of this website can be found <a className={classes.infoLink} href="https://www.github.com/DIT202003G1/WebDesignAssignment">here</a>.</Typography></Box>
+			<Box mb={5}><Typography className={classes.info}>This website is Open-Sourced with MIT License. The github repo of this website can be found <a className={classes.infoLink} target="_blank" href="https://www.github.com/DIT202003G1/WebDesignAssignment">here</a>.</Typography></Box>
 			<Typography className={classes.content}>
 				MIT License
 			</Typography>
