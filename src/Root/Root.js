@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 
 //global components
 import NavigationBar from "./GlobalComponent/NavigationBar";
+import Footer from "./GlobalComponent/Footer";
 
 //pages
 import Home from "./Home";
@@ -16,25 +17,21 @@ import Registration from './Registration';
 
 //create a material theme using createMuiTheme
 const theme = createMuiTheme({
-	typography:{
-		fontFamily: [
-			'Ubuntu',
-			'Roboto',
-			'sans-serif',
-		].join(','),
+	"typography":{
+		"fontFamily": "Ubuntu,Roboto,sans-serif"
 	},
-	palette:{
-		primary:{
-			main:"#005005",
-			light:"#3b7d32",
-			dark:"#002700",
-			contrastText:"#FFFFFF"
+	"palette":{
+		"primary":{
+			"main":"#005005",
+			"light":"#3b7d32",
+			"dark":"#002700",
+			"contrastText":"#FFFFFF"
 		},
-		secondary:{
-			main:"#FAFAFA",
-			light:"#FFFFFF",
-			dark:"#F0F0F0",
-			contrastText:"#000000"
+		"secondary":{
+			"main":"#FAFAFA",
+			"light":"#FFFFFF",
+			"dark":"#F0F0F0",
+			"contrastText":"#000000"
 		}
 	}
 })
@@ -54,6 +51,7 @@ export default function Root(props){
 					</Container></Box>
 					{/*Add 404 page here*/}
 			</Switch></Box>
+			<Footer/>
 			</ThemeProvider>
 		</Router>
 	);
