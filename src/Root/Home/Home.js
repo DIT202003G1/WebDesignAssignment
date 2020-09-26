@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/styles'
+import {Helmet} from "react-helmet";
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -45,6 +46,9 @@ export default function Home(props){
 	const classes = styles()
 	return(
 		<div className={classes.topContainer}>
+			<Helmet>
+				<title>Learn Now!</title>
+			</Helmet>
 			<Container>
 				<div className={classes.flexBox}>
 					<span>
