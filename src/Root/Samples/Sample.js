@@ -75,7 +75,7 @@ export default function Samples(props){
 					{"icon":<NoteIcon/>,"title":"Introduction to CSS and JS","subTitle":"An brief introduction on styling and JS programming","link":"/Samples/HTML/Doc_IntroCssJs"},
 					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/HTML/Doc_Sum"}
 				]);
-				setTitle("IT: HTML Basics")
+				setTitle("IT Front End: HTML Basics")
 				break;
 			case 3:
 				setTitle("Chemistry: Atomic Structure")
@@ -106,7 +106,7 @@ export default function Samples(props){
 						<div className={classes.listTitle}>Demo Resources Index</div>
 						<List>
 							<ListItem onClick={(c) => {switchContent(1)}} className={classNames[0]} button><ListItemText primary="Languages: Intro to Esparanto"/></ListItem>
-							<ListItem onClick={(c) => {switchContent(2)}} className={classNames[1]} button><ListItemText primary="IT: HTML Basics"/></ListItem>
+							<ListItem onClick={(c) => {switchContent(2)}} className={classNames[1]} button><ListItemText primary="IT Front End: HTML Basics"/></ListItem>
 							<ListItem onClick={(c) => {switchContent(3)}} className={classNames[2]} button><ListItemText primary="Chemistry: Atomic structure"/></ListItem>
 						</List>
 					</Box>
