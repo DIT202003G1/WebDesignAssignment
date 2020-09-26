@@ -9,6 +9,7 @@ import NavigationBar from "./GlobalComponent/NavigationBar";
 import Footer from "./GlobalComponent/Footer";
 
 //pages
+import License from './License';
 import Home from "./Home";
 import Samples from "./Samples";
 import About from "./About";
@@ -44,6 +45,7 @@ export default function Root(props){
 			<Box mt={6}><Switch>
 					<Route exact path="/" component={Home}/>
 					<Box mt={12}><Container>
+						<Route exact path="/License" component={License}/>
 						<Route exact path="/Samples" component={Samples}/>
 						<Route exact path="/About" component={About}/>
 						<Route exact path="/Login" component={Login}/>

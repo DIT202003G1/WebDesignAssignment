@@ -28,8 +28,9 @@ const styles = makeStyles({
 	},
 	listTitle:{
 		"background":"#60ad5e",
-		"padding":"10px 10px",
-		"color":"white"
+		"padding":"15px",
+		"color":"white",
+		"font-size":"18px"
 	},
 	listItemSelected:{
 		"background":"#dcedca",

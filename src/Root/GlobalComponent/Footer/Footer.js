@@ -1,17 +1,22 @@
-import React from 'react'
-import Container from '@material-ui/core/Container'
-import Box from '@material-ui/core/Box'
-import Divider from '@material-ui/core/Divider'
-import Typography from '@material-ui/core/Typography'
-import {makeStyles} from '@material-ui/styles'
+import React from 'react';
+import {Link} from "react-router-dom";
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import {makeStyles} from '@material-ui/styles';
 
 const styles = makeStyles({
 	flexBox:{
 		display:"flex",
-		'justify-content': "space-between",
+		// 'justify-content': "space-between",
 	},
 	light:{
-		color:"gray"
+		color:"gray",
+		"margin-right":"20px"
+	},
+	link:{
+		color:"gray",
 	}
 });
 
@@ -22,7 +27,8 @@ export default function Footer(props){
 			<Container>
 				<Divider/>
 				<Box mt={1} className={classes.flexBox}>
-					<span className={classes.light}><Typography>&copy; 2020 Xuanao Zhao, Ryan Cheah, Yong Liang Poo, Tiew Shou Cheng. &nbsp;&nbsp;&nbsp;MIT Licence applied.</Typography></span>
+					<span className={classes.light}><Typography>&copy; 2020 Xuanao Zhao, Ryan Cheah, Yong Liang Poo, Tiew Shou Cheng.</Typography></span>
+					<span className={classes.light}><Link to="/License" className={classes.link}><Typography>License</Typography></Link></span>
 				</Box>
 			</Container>
 		</Box>
