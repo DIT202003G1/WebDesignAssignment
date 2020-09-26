@@ -1,4 +1,5 @@
 import React from 'react'
+import {Helmet} from "react-helmet";
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
@@ -14,6 +15,9 @@ export default function About(props){
 	const classes = styles()
 	return(
 		<Box>
+			<Helmet>
+				<title>About - Learn Now!</title>
+			</Helmet>
 			<Typography className={classes.title} variant="h4">About Learn Now</Typography>
 		</Box>
 	);

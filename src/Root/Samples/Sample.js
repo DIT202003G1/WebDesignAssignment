@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-// import {useState} from 'react';
+import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +7,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Paper from "@material-ui/core/Paper";
 import Avatar from '@material-ui/core/Avatar';
 import NoteIcon from '@material-ui/icons/Note';
 import FolderIcon from '@material-ui/icons/Folder';
@@ -17,6 +16,10 @@ import {makeStyles} from '@material-ui/styles'
 const styles = makeStyles({
 	title:{
 		"color":"#005005"
+	},
+	header:{
+		"color":"#005005",
+		"font-size":"28px"
 	},
 	flexBox:{
 		display:"flex"
@@ -47,14 +50,14 @@ const styles = makeStyles({
 
 export default function Samples(props){
 	const classes = styles()
-	const [title, setTitle] = useState("Please select a topic.");
+	const [title, setTitle] = useState("");
 	const [contents, setContents] = useState([])
 	const [classNames,setClassNames] = useState(["","",""])
 	const switchContent = (index) => {
 		switch (index){
 			case 1:
 				setClassNames([classes.listItemSelected,"",""])
-				setTitle("Languages: Esparanto Basics")
+				setTitle("Languages: Intro to Esparanto")
 				setContents([
 					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Esparanto/Exercises"},
 					{"icon":<NoteIcon/>,"title":"Esparanto Letters","subTitle":"Esparanto Letters and the Pronouncation","link":"/Samples/Esparanto/Doc_Letters"},
@@ -92,21 +95,25 @@ export default function Samples(props){
 	}
 	return(
 		<Box>
-			<Typography className={classes.title} variant="h4">Demo Resource</Typography>
+			<Helmet>
+				<title>Demo Resources - Learn Now!</title>
+			</Helmet>
+			<Box mb={2}><Typography className={classes.title} variant="h4">Demo Resource</Typography></Box>
+			<Typography className={classes.title} variant="Body">This is the Demo Resources of the system, you will be able to view some sample notes. Subscribe to gain access to our 5000+ resources for 30+ subjects. Get started by sleecting a topic from the index below.</Typography>
 			<Box className={classes.flexBox} mt={5}>
 				<span>
-					<Box mr={2} className={classes.listBox} variant="outlined">
+					<Box mr={6} className={classes.listBox} variant="outlined">
 						<div className={classes.listTitle}>Demo Resources Index</div>
 						<List>
-							<ListItem onClick={(c) => {switchContent(1)}} className={classNames[0]} button><ListItemText primary="Languages: Esparanto Basics"/></ListItem>
+							<ListItem onClick={(c) => {switchContent(1)}} className={classNames[0]} button><ListItemText primary="Languages: Intro to Esparanto"/></ListItem>
 							<ListItem onClick={(c) => {switchContent(2)}} className={classNames[1]} button><ListItemText primary="IT: HTML Basics"/></ListItem>
 							<ListItem onClick={(c) => {switchContent(3)}} className={classNames[2]} button><ListItemText primary="Chemistry: Atomic structure"/></ListItem>
 						</List>
 					</Box>
 				</span>
 				<span>
-					<Typography variant="h4" className={classes.title}>{title}</Typography>
-					<Box mr={1}>
+					<Typography variant="h4" className={classes.header}>{title}</Typography>
+					<Box>
 						<List >
 							{contents.map((i)=>
 								<Link to={i.link} className={classes.contentText}>
