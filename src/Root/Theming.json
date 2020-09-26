@@ -1,0 +1,19 @@
+{
+	typography:{
+		fontFamily: 'Ubuntu,Roboto,sans-serif'
+	},
+	palette:{
+		primary:{
+			main:"#005005",
+			light:"#3b7d32",
+			dark:"#002700",
+			contrastText:"#FFFFFF"
+		},
+		secondary:{
+			main:"#FAFAFA",
+			light:"#FFFFFF",
+			dark:"#F0F0F0",
+			contrastText:"#000000"
+		}
+	}
+}

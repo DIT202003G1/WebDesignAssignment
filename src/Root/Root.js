@@ -43,7 +43,7 @@ export default function Root(props){
 			<NavigationBar/>
 			<Box mt={6}><Switch>
 					<Route exact path="/" component={Home}/>
-					<Box mt={10}><Container>
+					<Box mt={12}><Container>
 						<Route exact path="/Samples" component={Samples}/>
 						<Route exact path="/About" component={About}/>
 						<Route exact path="/Login" component={Login}/>

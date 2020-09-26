@@ -65,18 +65,18 @@ const NavigationBar = (props) => {
 	}
 	
 	var rightSide = [
-		<Link className={buttonClass} to="Login">
+		<Link className={buttonClass} to="/Login">
 			<Button className={buttonClass} color="inherit"><Typography variant="button">Login</Typography></Button>
 		</Link>,
 		<Box ml={2}>
-			<Link className={buttonClass} to="Registration">
+			<Link className={buttonClass} to="/Registration">
 				<Button className={outlinedClass} color="inherit"><AddCircleOutlineIcon className={classes.buttonIcon}/><Typography variant="button">Subscribe</Typography></Button>
 			</Link>
 		</Box>
 	]
 	var leftSide = [
 		<Box ml={2}>
-			<Link className={buttonClass} to="Samples">
+			<Link className={buttonClass} to="/Samples">
 				<Button color="inherit" className={buttonClass}><Typography variant="button">Demo Resources</Typography></Button>
 			</Link>
 		</Box>
@@ -108,7 +108,7 @@ const NavigationBar = (props) => {
 						</Box>
 						{leftSide}
 						<Box ml={2}>
-							<Link className={buttonClass} to="About">
+							<Link className={buttonClass} to="/About">
 								<Button color="inherit" className={buttonClass}><Typography variant="button">About</Typography></Button>
 							</Link>
 						</Box>
