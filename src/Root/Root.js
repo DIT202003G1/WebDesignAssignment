@@ -43,19 +43,23 @@ export default function Root(props){
 		<Router>
 			<ThemeProvider theme={theme}>
 			<NavigationBar/>
-			<Box mt={6}><Switch>
+			<Box mt={6}>
+				<Switch>
 					<Route exact path="/" component={Home}/>
-					<Box mt={12}><Container>
-						<Switch>
-						<Route exact path="/License" component={License}/>
-						<Route exact path="/Samples" component={Samples}/>
-						<Route exact path="/About" component={About}/>
-						<Route exact path="/Login" component={Login}/>
-						<Route exact path="/Registration" component={Registration}/>
-						<Route path="/" component={ErrNotFound}/>
-						</Switch>
-					</Container></Box>
-			</Switch></Box>
+					<Box mt={12}>
+						<Container>
+							<Switch>
+							<Route exact path="/License" component={License}/>
+							<Route exact path="/Samples" component={Samples}/>
+							<Route exact path="/About" component={About}/>
+							<Route exact path="/Login" component={Login}/>
+							<Route exact path="/Registration" component={Registration}/>
+							<Route path="/" component={ErrNotFound}/>
+							</Switch>
+						</Container>
+					</Box>
+				</Switch>
+			</Box>
 			<Footer/>
 			</ThemeProvider>
 		</Router>
