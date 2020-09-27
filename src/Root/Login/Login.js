@@ -35,7 +35,6 @@ export default function Login(props){
 		<div>
 			<Helmet>
 				<title>Login - Learn Now!</title>
-				<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 			</Helmet>
 			<Box mb={2}><Typography className={classes.title} variant="h4">Login</Typography></Box>
 			<Box className={classes.flexBox}>

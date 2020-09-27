@@ -119,7 +119,6 @@ export default function Registration(porps){
 	return(
 		<div>
 			<Helmet>
-				<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 				<title>Subscribe - Learn Now!</title>
 			</Helmet>
 			<Box mb={2}><Typography className={classes.title} variant="h4">Subscribe to Learn Now</Typography></Box>
