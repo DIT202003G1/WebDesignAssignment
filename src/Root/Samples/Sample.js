@@ -20,12 +20,14 @@ const styles = makeStyles({
 	description:{
 		"color":"#005005",
 		"line-height":"28px",
+		"font-size":"22px",
 		"display":"block",
 	},
 	instruction:{
 		"color":"#005005",
 		"line-height":"28px",
 		"display":"block",
+		"font-size":"22px",
 		"margin":"20px 0px"
 	},
 	header:{

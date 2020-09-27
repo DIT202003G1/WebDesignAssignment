@@ -13,6 +13,7 @@ const styles = makeStyles({
 	},
 	light:{
 		color:"gray",
+		"font-size":"22px",
 		"margin-right":"20px"
 	},
 	link:{
@@ -27,8 +28,8 @@ export default function Footer(props){
 			<Container>
 				<Divider/>
 				<Box mt={1} className={classes.flexBox}>
-					<span className={classes.light}><Typography>&copy; 2020 Xuanao Zhao, Ryan Cheah, Yong Liang Poo, Tiew Shou Cheng.</Typography></span>
-					<span className={classes.light}><Link to="/License" className={classes.link}><Typography>License</Typography></Link></span>
+					<span className={classes.light}><Typography vairant="body1">&copy; 2020 Xuanao Zhao, Ryan Cheah, Yong Liang Poo, Tiew Shou Cheng.</Typography></span>
+					<span className={classes.light}><Link to="/License" className={classes.link}><Typography vairant="body1">License</Typography></Link></span>
 				</Box>
 			</Container>
 		</Box>
