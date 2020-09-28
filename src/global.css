@@ -6,3 +6,23 @@
 body{
 	background: #f4f9f1;
 }
+
+/*Customization of Scrollbar*/
+/*::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f9f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #CCC;
+  border-radius: 5px
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aee571;
+}*/
+
+/*hide scrollbar*/
+::-webkit-scrollbar {
+  width: 0px;
+}

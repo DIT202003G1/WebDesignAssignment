@@ -128,8 +128,8 @@ export default function Registration(porps){
 				<Plans link={()=>{setShowform(true);setShowplans(false);setSelected("Pro")}} name="Pro" price="80 MYR/Month" listitems={["View all available subjects","No time limitations","Ads free","Ask Questions to a Varified Lecturer"]}/>
 			</Box></Collapse>
 			<Collapse in={showform} className={classes.flexBox2}>
-				<span className={classes.regForm}><RegForm backButton={()=>{setShowform(false);setShowplans(true);}} text={selected}/></span>
-			</Collapse>
+				<span className={classes.regForm}><RegForm backButton={()=>{setShowform(false);setShowplans(true);}} text={selected}/></span
+>			</Collapse>
 		</div>
 	);
 }
