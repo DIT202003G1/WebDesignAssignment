@@ -87,7 +87,7 @@ export default function About(props){
 			<Typography className={classes.description} variant="body1">The Learn Now Online Platform by Learn Now Ltd is a website which provides you educational resources from language learning to high-school programs such as the IB Diploma Program, the SAT or the International GCSE program, or general knoladge of different fields. </Typography>
 			<Typography className={classes.description} variant="body1">We have designed an easier way to understand each topic and has summerized notes/exersices for each chepter.</Typography>
 			<Typography className={classes.header} variant="body1">The Founders</Typography>
-			<FounderBox image={SeanH} name="Sean H., Founder of Learn Now" description="I always had a dream when I was yonger, which everyone can learn anything they want."/>
+			<FounderBox image={SeanH} name="Sean H., Founder of Learn Now" description="I always had a dream when I was younger, which everyone can learn anything they want."/>
 			<FounderBox image={Cat} name="Crying Cat, Co-Founder of Learn Now" description="Meow Meow, Meow"/>
 			<Typography className={classes.header} variant="body1">Contact us</Typography>
 			<table>
