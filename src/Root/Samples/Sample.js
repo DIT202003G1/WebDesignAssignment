@@ -72,21 +72,21 @@ export default function Samples(props){
 				setClassNames([classes.listItemSelected,"",""])
 				setTitle("Languages: Intro to Esperanto")
 				setContents([
-					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Esperanto/Exercises"},
-					{"icon":<NoteIcon/>,"title":"Esperanto Letters","subTitle":"Esperanto Letters and the Pronouncation","link":"/Samples/Esperanto/Docs/Letters"},
-					{"icon":<NoteIcon/>,"title":"Esperanto Numbers","subTitle":"Counting in Esperanto","link":"/Samples/Esperanto/Docs/Numbers"},
-					{"icon":<NoteIcon/>,"title":"Other Esperanto Basics","subTitle":"Basic Vocabs, Basic Grammars","link":"/Samples/Esperanto/Docs/Basics"},
-					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/Esperanto/Docs/Sum"}
+					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Exercises/Esperanto"},
+					{"icon":<NoteIcon/>,"title":"Esperanto Letters","subTitle":"Esperanto Letters and the Pronouncation","link":"/Samples/Docs/Esperanto/Letters"},
+					{"icon":<NoteIcon/>,"title":"Esperanto Numbers","subTitle":"Counting in Esperanto","link":"/Samples/Docs/Esperanto/Numbers"},
+					{"icon":<NoteIcon/>,"title":"Other Esperanto Basics","subTitle":"Basic Vocabs, Basic Grammars","link":"/Samples/Docs/Esperanto/Basics"},
+					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/Docs/Esperanto/Sum"}
 				]);
 			break;
 			case 2:
 				setClassNames(["",classes.listItemSelected,""])
 				setContents([
-					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/HTML/Exercises"},
-					{"icon":<NoteIcon/>,"title":"Getting Started","subTitle":"How to create your first Web Page","link":"/Samples/HTML/Docs/GettingStarted"},
-					{"icon":<NoteIcon/>,"title":"Html Components","subTitle":"Common HTML Components","link":"/Samples/HTML/Docs/HTMLComponents"},
-					{"icon":<NoteIcon/>,"title":"Introduction to CSS and JS","subTitle":"An brief introduction on styling and JS programming","link":"/Samples/HTML/Docs/IntroCssJs"},
-					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/HTML/Docs/Sum"}
+					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Exercises/HTML"},
+					{"icon":<NoteIcon/>,"title":"Getting Started","subTitle":"How to create your first Web Page","link":"/Samples/Docs/HTML/GettingStarted"},
+					{"icon":<NoteIcon/>,"title":"Html Components","subTitle":"Common HTML Components","link":"/Samples/Docs/HTML/HTMLComponents"},
+					{"icon":<NoteIcon/>,"title":"Introduction to CSS and JS","subTitle":"An brief introduction on styling and JS programming","link":"/Samples/Docs/HTML/IntroCssJs"},
+					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/Docs/HTML/Sum"}
 				]);
 				setTitle("IT Front End: HTML Basics")
 			break;
@@ -94,10 +94,10 @@ export default function Samples(props){
 				setTitle("Chemistry: Atomic Structure")
 				setClassNames(["","",classes.listItemSelected])
 				setContents([
-					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Chemistry/Exercises"},
-					{"icon":<NoteIcon/>,"title":"Atomic Struction","subTitle":"The Structure and Properties of an atom","link":"/Samples/Chemistry/Docs/GettingStarted"},
-					{"icon":<NoteIcon/>,"title":"Related to Periodic Table","subTitle":"What does the periodic table tells you about an atom","link":"/Samples/Chemistry/Docs/HTMLComponents"},
-					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/Chemistry/Docs/Sum"}
+					{"icon":<FolderIcon/>,"title":"Exercises","subTitle":"Click to begin the exercises","link":"/Samples/Exercises/Chemistry"},
+					{"icon":<NoteIcon/>,"title":"Atomic Struction","subTitle":"The Structure and Properties of an atom","link":"/Samples/Docs/Chemistry/AtomicStructure"},
+					{"icon":<NoteIcon/>,"title":"Related to Periodic Table","subTitle":"What does the periodic table tells you about an atom","link":"/Samples/Docs/Chemistry/PeriodicTable"},
+					{"icon":<NoteIcon/>,"title":"Summerized Notes","subTitle":"Everything you need for revision","link":"/Samples/Docs/Chemistry/Sum"}
 				]);
 			break;
 			default:
