@@ -123,5 +123,5 @@ export default function Docs(props){
 			<Box mb={2}><Typography className={classes.title} variant="h4">{title}</Typography></Box>
 			{sampleDocument}
 		</Box>
-	);
+	);	
 }
