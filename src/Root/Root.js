@@ -14,6 +14,7 @@ import ErrNotFound from './ErrNotFound';
 import Home from "./Home";
 import Samples from "./Samples";
 import SampleDocs from "./Samples/DynamicNotePages/Docs";
+import SampleExercises from "./Samples/DynamicNotePages/Exercises";
 import About from "./About";
 import Login from './Login';
 import Registration from './Registration';
@@ -52,7 +53,7 @@ export default function Root(props){
 							<Switch>
 								<Route exact path="/License" component={License}/>
 								<Route exact path="/Samples" component={Samples}/>
-								<Route exact path="/Samples/Exercises/:subject" component={ErrNotFound}/>
+								<Route exact path="/Samples/Exercises/:subject" component={SampleExercises}/>
 								<Route exact path="/Samples/Docs/:subject/:title" component={SampleDocs}/>
 								<Route exact path="/Samples/Docs/:subject" component={SampleDocs}/>
 								<Route exact path="/About" component={About}/>

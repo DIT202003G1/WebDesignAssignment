@@ -1,4 +1,5 @@
 import React from 'react'
+import {Helmet} from 'react-helmet'
 import {Link} from 'react-router-dom'
 import {makeStyles} from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
@@ -120,6 +121,9 @@ export default function Docs(props){
 	}
 	return(
 		<Box>
+			<Helmet>
+				<title>Demo Resources - Learn Now!</title>
+			</Helmet>
 			<Box mb={2}><Typography className={classes.title} variant="h4">{title}</Typography></Box>
 			{sampleDocument}
 		</Box>
