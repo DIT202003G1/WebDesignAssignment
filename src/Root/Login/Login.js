@@ -14,6 +14,8 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Collapse from '@material-ui/core/Collapse';
+import Alert from '@material-ui/lab/Alert'
 
 import imgHello from "./hello.png"
 
@@ -44,73 +46,82 @@ function validateUsername(name){
 	if (name.trim() === "") returnCode = 1;
 	if (new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$").test(name)) isEmail = true;
 	if (!isEmail && new RegExp("@").test(name)) returnCode = 2;
-	return [(returnCode>0), returnCode];
+	return returnCode; //[isInvalid]
 }
 
 function validatePassword(password){
 	//0 for valid, 1 for empty
 	var returnCode = 0;
 	if (password === "") returnCode = 1;
-	return [(returnCode>0),returnCode];
+	return returnCode;
 }
 
 function LoginForm(props){
-	const [unState, setUnState] = useState([false,""]);
-	const [pwState, setPwState] = useState([false,""]);
-	const [validState, setValidState] = useState(true);
-	const [showPassword, setShowPassword] = useState(false);
-	const unErrorMessages = ["","Username cannot be empty","Invalid Email Address or Username containing '@'"];
-	const pwErrorMessages = ["","Password cannot be empty"];
-	const updateUnField = (eArgs) => {
-		const result = validateUsername(eArgs.target.value)
-		setUnState([result[0],unErrorMessages[result[1]]]);
-		setValidState(!result[0]);
-	}
-	const updatePwField = (eArgs) => {
-		const result = validatePassword(eArgs.target.value)
-		setPwState([result[0],pwErrorMessages[result[1]]]);
-		setValidState(!result[0]);
-	}
-	const updateShowPw = (eArgs) => {
-		setShowPassword(!showPassword);
-	}
-	const onLoginClick = (eArgs) => {
-		var message = validState ? "Successfully logged in" : "One or Multiple fields invalid!";
-		alert(message);
-	}
 	const classes = styles();
+	const [showPw,setShowPw] = useState(true);
+	const [validation, setValidation] = useState([0,0]);
+
+	const unErrorMsgs = ["","Required Field","Invalid Email or Username Format"];
+	const pwErrorMsgs = ["","Required Field"];
+
+	function validateUn(){
+		const un = document.getElementById("username").value;
+		setValidation([validateUsername(un),validation[1]]);
+	}
+
+	function validatePw(){
+		const pw = document.getElementById("password").value;
+		setValidation([validation[0], validatePassword(pw)]);
+	}
+
+	function validateAll(){
+		const un = document.getElementById("username").value;
+		const pw = document.getElementById("password").value;
+	}
+
+	function submit(){
+		validateAll();
+		console.table(validation);
+		if( validation[0] === 0 && validation[1] === 0) {
+			alert("yay")
+		}
+	}
+
 	return ([
+		<Collapse in={(!!validation[0]) || (!!validation[1])}>
+			<Alert severity="error">One or multiple fields are Invalid</Alert>
+		</Collapse>,
 		<FormControl className={classes.formControl} >
-			<InputLabel error={unState[0]} htmlFor="username">Username</InputLabel>
+			<InputLabel error={!!validation[0]} htmlFor="username">Username</InputLabel>
 			<Input
-				error={unState[0]}
+				error={!!validation[0]}
+				onChange={validateUn}
 				id="username"
 				type="text"
 				className={classes.txtInput}
-				onChange={updateUnField}
 			/>
-			<FormHelperText error={unState[0]} id="username-error-text">{unState[1]}</FormHelperText>
+			<FormHelperText error id="username-error-text">{unErrorMsgs[validation[0]]}</FormHelperText>
 		</FormControl>,
 		<FormControl className={classes.formControl}>
-			<InputLabel error={pwState[0]} htmlFor="password">Password</InputLabel>
+			<InputLabel error={!!validation[1]} htmlFor="password">Password</InputLabel>
 			<Input
 				id="password"
-				error={pwState[0]}
+				error={!!validation[1]}
+				onChange={validatePw}
 				className={classes.txtInput}
-				type={showPassword ? 'text' : 'password'}
-				onChange={updatePwField}
+				type={showPw ? "password" : "text"}
 				endAdornment={
 					<InputAdornment position="end">
-					<IconButton aria-label="toggle password visibility" onClick={updateShowPw}>
-					{showPassword ? <Visibility /> : <VisibilityOff />}
+					<IconButton onClick={()=>{setShowPw(!showPw)}}>
+					{showPw ? <Visibility/> : <VisibilityOff/>}
 					</IconButton>
 					</InputAdornment>
 				}
 			/>
-			<FormHelperText error={pwState[0]} id="password-error-text">{pwState[1]}</FormHelperText>
+			<FormHelperText error id="password-error-text">{pwErrorMsgs[validation[1]]}</FormHelperText>
 		</FormControl>,
 		<div className={classes.formControl} class="g-recaptcha" data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/>,
-		<Button className={classes.button} variant="contained" color="secondary" onClick={onLoginClick}>Login</Button>
+		<Button className={classes.button} onClick={submit} variant="contained" color="secondary">Login</Button>
 	])
 }
 

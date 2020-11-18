@@ -5,8 +5,10 @@
   "dependencies": {
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@react-pdf/renderer": "^1.6.11",
     "formik": "^2.1.5",
+    "i": "^0.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
