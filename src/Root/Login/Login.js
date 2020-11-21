@@ -61,7 +61,7 @@ function LoginForm(props){
 	const [showPw,setShowPw] = useState(true);
 	const [validation, setValidation] = useState([0,0]);
 
-	const unErrorMsgs = ["","Required Field","Invalid Email or Username Format"];
+	const unErrorMsgs = ["","Required Field","Invalid Email or Username"];
 	const pwErrorMsgs = ["","Required Field"];
 
 	function validateUn(){
@@ -113,11 +113,11 @@ function LoginForm(props){
 				endAdornment={
 					<InputAdornment position="end">
 					<IconButton onClick={()=>{setShowPw(!showPw)}}>
-					{showPw ? <Visibility/> : <VisibilityOff/>}
+					{showPw ? <VisibilityOff/> : <Visibility/>}
 					</IconButton>
 					</InputAdornment>
 				}
-			/>
+			/>　
 			<FormHelperText error id="password-error-text">{pwErrorMsgs[validation[1]]}</FormHelperText>
 		</FormControl>,
 		<div className={classes.formControl} class="g-recaptcha" data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/>,

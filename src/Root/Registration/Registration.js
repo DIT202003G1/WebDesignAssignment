@@ -10,6 +10,14 @@ import {Formik, Form, Field} from 'formik'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import FormControl from '@material-ui/core/FormControl'
+import Alert from '@material-ui/lab/Alert'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const styles = makeStyles({
 	title:{
@@ -32,6 +40,16 @@ const styles = makeStyles({
 	},
 	subButton:{
 		"margin-left":"16px"
+	},
+	"formControl":{
+		"display":"block",
+		"margin-bottom":"16px",
+	},
+	"txtInput":{
+		"width":"100%"
+	},
+	"button":{
+		"margin-top":"10px"
 	}
 });
 
@@ -93,20 +111,143 @@ function Plans({name,listitems,price,link}){
 	);
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function validateUsername(name){
+	// 0 for valid, 1 for empty, 2 for invalid email format
+	var isEmail = false;
+	if (name.trim() === "") return 1;
+	if (new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$").test(name)) isEmail = true;
+	if (!isEmail && new RegExp("@").test(name)) return 2;
+}
+
+function validatePassword(password){
+	//0 for valid, 1 for empty, 2 for less then 8 char
+	if (password === "") return 1;
+	if (password.length < 8) return 2;
+}
+
+function validateReenteredPassword(password){
+	//0 for valid, 1 for empty, 2 for not match
+	const pw = document.getElementById("password").value;
+	if (password === "") return 1;
+	if (password !== pw) return 2;
+}
+
 function RegForm(props){
-	const classes = styles()
+	const classes = styles();
+	const [showPw, setShowPw] = useState(false);
+	const [showRePw, setShowRePw] = useState(false);
+	const [validation, setValidation] = useState([0,0,0]);
+
+	const unErrorMsgs = ["","Required Field","Invalid Email or Username"];
+	const pwErrorMsgs = ["","Required Field","Password needs atleast 8"];
+	const repwErrorMsgs = ["","Required Field","Re-entered password does not match"];
+
+	const isError = () => (!!validation[0]) || (!!validation[1]) || (!!validation[0]);
+
+	function validateUn(e){
+		const result = validateUsername(e.target.value);
+		setValidation([
+			result,
+			validation[1],
+			validation[2]
+		]); 
+	}
+
+	function validatePw(e){
+		const result = validatePassword(e.target.value);
+		setValidation([
+			validation[0],
+			result,
+			validation[2]
+		]); 	
+	}
+
+	function validateRePw(e){
+		const result = validateReenteredPassword(e.target.value);
+		setValidation([
+			validation[0],
+			validation[1],
+			result
+		]);	
+	}
+
+	async function validateAll(){
+		const un = document.getElementById("username").value;
+		const pw = document.getElementById("password").value;
+		const repw = document.getElementById("reenterPassword").value;
+		setValidation([
+			validateUsername(un),
+			validatePassword(pw),
+			validateReenteredPassword(repw)
+		]
+		)
+	}
+
+	async function submit(){
+		await validateAll();
+		if (!isError()){
+			alert("Registration Done! Proceed to login!")
+			window.location.href="/login"
+		}
+	}
+
 	return (
 		<Box>
-			<Typography className={classes.header} variant="body1">Signing up for: {props.text}</Typography>
-			<Formik onSubmit={(values, {setSubmitting}) => {window.location="App"}} validate={(i)=>{return null}} initialValues={{username:"",password:""}}>
-				{({submitForm, isSubmitting, touched, errors}) => {return([
-					<Box mb={2}><Field component={LoginInputs} name="username" type="username" label="Username / E-Mail"/></Box>,
-					<Box mb={2}><Field component={LoginInputs} name="password" type="password" label="Password"/></Box>,
-					<Box mb={2}><Field component={LoginInputs} name="reenter" type="password" label="Re-Enter"/></Box>,
-					<Box mb={2}><div class="g-recaptcha" data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/></Box>,
-					<Box mb={2}><LoginButton variant="contained" onClick={submitForm}>Submit</LoginButton><LoginButtonSub className={classes.subButton} variant="contained" onClick={props.backButton}>Back</LoginButtonSub></Box>,
-				]);}}
-			</Formik>
+			<Typography variant="body1" className={classes.header}>Signing up for: {props.text}</Typography>
+			<Collapse in={isError()} className={classes.formControl}>
+				<Alert severity="error">One or multiple fields are Invalid</Alert>
+			</Collapse>
+			<FormControl className={classes.formControl}>
+				<InputLabel error={!!validation[0]} htmlFor="username">Username</InputLabel>
+				<Input
+					error={!!validation[0]}
+					onChange={validateUn}
+					className={classes.txtInput}
+					id="username"
+					type="text"
+				/>
+				<FormHelperText error id="username-error-text">{unErrorMsgs[validation[0]]}</FormHelperText>
+			</FormControl>
+			<FormControl className={classes.formControl}>
+				<InputLabel error={!!validation[1]} htmlFor="password">Password</InputLabel>
+				<Input
+					error={!!validation[1]}
+					onChange={validatePw}
+					id="password"
+					type={showPw ? "text" : "password"}
+					endAdornment={
+						<InputAdornment position="end">
+						<IconButton onClick={()=>{setShowPw(!showPw)}}>
+						{showPw ? <Visibility/> : <VisibilityOff/>}
+						</IconButton>
+						</InputAdornment>
+					}
+				/>
+				<FormHelperText error id="password-error-text">{pwErrorMsgs[validation[1]]}</FormHelperText>
+			</FormControl>
+			<FormControl className={classes.formControl}>
+				<InputLabel error={!!validation[2]} htmlFor="reenterPassword">Re-Enter Password</InputLabel>
+				<Input
+					error={!!validation[2]}
+					onChange={validateRePw}
+					id="reenterPassword"
+					type={showRePw ? "text" : "password"}
+					endAdornment={
+						<InputAdornment position="end">
+						<IconButton onClick={()=>{setShowRePw(!showRePw)}}>
+						{showRePw ? <Visibility/> : <VisibilityOff/>}
+						</IconButton>
+						</InputAdornment>
+					}
+				/>
+				<FormHelperText error id="reenterPassword-error-text">{repwErrorMsgs[validation[2]]}</FormHelperText>
+			</FormControl>
+			<div className={`g-recaptcha ${classes.formControl}`} data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/>
+			<Button onClick={submit} variant="contained" color="secondary">Login</Button>
 		</Box>
 	);
 }
@@ -128,8 +269,18 @@ export default function Registration(porps){
 				<Plans link={()=>{setShowform(true);setShowplans(false);setSelected("Pro")}} name="Pro" price="80 MYR/Month" listitems={["View all available subjects","No time limitations","Ads free","Ask Questions to a Varified Lecturer"]}/>
 			</Box></Collapse>
 			<Collapse in={showform} className={classes.flexBox2}>
-				<span className={classes.regForm}><RegForm backButton={()=>{setShowform(false);setShowplans(true);}} text={selected}/></span
->			</Collapse>
+				<span className={classes.regForm}><RegForm backButton={()=>{setShowform(false);setShowplans(true);}} text={selected}/></span>
+			</Collapse>
 		</div>
 	);
 }
+
+{/*			<Formik onSubmit={(values, {setSubmitting}) => {window.location="App"}} validate={(i)=>{return null}} initialValues={{username:"",password:""}}>
+				{({submitForm, isSubmitting, touched, errors}) => {return([
+					<Box mb={2}><Field component={LoginInputs} name="username" type="username" label="Username / E-Mail"/></Box>,
+					<Box mb={2}><Field component={LoginInputs} name="password" type="password" label="Password"/></Box>,
+					<Box mb={2}><Field component={LoginInputs} name="reenter" type="password" label="Re-Enter"/></Box>,
+					<Box mb={2}><div class="g-recaptcha" data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/></Box>,
+					<Box mb={2}><LoginButton variant="contained" onClick={submitForm}>Submit</LoginButton><LoginButtonSub className={classes.subButton} variant="contained" onClick={props.backButton}>Back</LoginButtonSub></Box>,
+				]);}}
+			</Formik>*/}
