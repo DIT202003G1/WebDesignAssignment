@@ -274,13 +274,3 @@ export default function Registration(porps){
 		</div>
 	);
 }
-
-{/*			<Formik onSubmit={(values, {setSubmitting}) => {window.location="App"}} validate={(i)=>{return null}} initialValues={{username:"",password:""}}>
-				{({submitForm, isSubmitting, touched, errors}) => {return([
-					<Box mb={2}><Field component={LoginInputs} name="username" type="username" label="Username / E-Mail"/></Box>,
-					<Box mb={2}><Field component={LoginInputs} name="password" type="password" label="Password"/></Box>,
-					<Box mb={2}><Field component={LoginInputs} name="reenter" type="password" label="Re-Enter"/></Box>,
-					<Box mb={2}><div class="g-recaptcha" data-sitekey="6Lc1AtEZAAAAAEBVa1wvNDBt7VJtBKsXhBEVGGQa"/></Box>,
-					<Box mb={2}><LoginButton variant="contained" onClick={submitForm}>Submit</LoginButton><LoginButtonSub className={classes.subButton} variant="contained" onClick={props.backButton}>Back</LoginButtonSub></Box>,
-				]);}}
-			</Formik>*/}

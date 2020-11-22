@@ -45,18 +45,21 @@ const urlTopics = {
 
 const urlDicts = {
 	"HTML":{
+		"Exercises":"Exercises",
 		"GettingStarted":"Getting Started",
 		"HTMLComponents":"Html Components",
 		"IntroCssJs":"Introduction to CSS and JS",
 		"Sum":"Summerized Notes"
 	},
 	"Esperanto":{
+		"Exercises":"Exercises",
 		"Letters":"Esperanto Letters",
 		"Numbers":"Esperanto Numbers",
 		"Basics":"Other Esperanto Basics",
 		"Sum":"Summerized Notes",
 	},
 	"Chemistry":{
+		"Exercises":"Exercises",
 		"AtomicStructure":"Atomic Structure",
 		"PeriodicTable":"Related to Periodic Table",
 		"Sum":"Summerized Notes",
